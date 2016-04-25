@@ -21,9 +21,10 @@ var api = new ParseServer({
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   },
   push: {
-    android: {
-      senderId: process.env.GCM_SENDER_ID || '',
-      apiKey: process.env.GCM_API_KEY || ''
+    ios: {
+      pfx: process.env.APNS_P12_PATH || '/app/push.p12',
+      bundleId: process.env.APNS_BUNDLE_ID || '',
+      production: true
     }
   }
 });
