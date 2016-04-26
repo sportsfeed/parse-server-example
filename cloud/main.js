@@ -91,7 +91,7 @@ Parse.Cloud.define("inviteUser", function(req, res) {
           scores: 1,
           group: "invite"
         }
-      }).then(function() {
+      }, { useMasterKey: true }).then(function() {
         res.success("Invite sent successfully.");
       }, function(error) {
         res.error("Invite failed to send with error: " + error.message);
@@ -175,6 +175,7 @@ function sendGroupAlert(res, gameId, groupId, parentId, message, retry) {
           group_id: groupId
         }
       }, {
+        useMasterKey: true,
         success: function() {
           res.success("Alert sent successfully.");
         },
